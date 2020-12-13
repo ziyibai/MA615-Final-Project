@@ -78,3 +78,83 @@ stock_returns_monthly %>%
          x = "Date",y="Monthly Return Rate")
 ```
 
+### Investment Plan
+
+```{r}
+# try another invest rate combination: 30% MSFT, 40% BIDU, 30% NTES
+initial_position <- 250000 
+wts <- c(0.3,0.4,0.3)
+portfolio_growth_monthly_3 <- stock_returns_monthly %>%
+    tq_portfolio(assets_col   = symbol, 
+                 returns_col  = monthly.return, 
+                 weights      = wts, 
+                 col_rename   = "investment.growth",
+                 wealth.index = TRUE) %>%
+    mutate(investment.growth = investment.growth * initial_position)
+
+portfolio_growth_monthly_3 %>%
+    ggplot(aes(x = date, y = investment.growth)) +
+    geom_line(size = 2, color = palette_light()[[5]]) +
+    labs(title = "Portfolio Performance 1",
+         subtitle = "30% MSFT,40% BIDU,30% NTES",
+         x = "", y = "Portfolio Value") +
+    geom_smooth(method = "loess") +
+    theme_tq() +
+    scale_color_tq() +
+    scale_y_continuous(labels = scales::dollar)
+```
+
+
+```{r}
+# calculate investment result
+initial_position <- 250000 
+wts <- c(0.2,0.7,0.1)
+portfolio_growth_monthly_1 <- stock_returns_monthly %>%
+    tq_portfolio(assets_col   = symbol, 
+                 returns_col  = monthly.return, 
+                 weights      = wts, 
+                 col_rename   = "investment.growth",
+                 wealth.index = TRUE) %>%
+    mutate(investment.growth = investment.growth * initial_position)
+
+portfolio_growth_monthly_1 %>%
+    ggplot(aes(x = date, y = investment.growth)) +
+    geom_line(size = 2, color = palette_light()[[5]]) +
+    labs(title = "Portfolio Performance 2",
+         subtitle = "20% MSFT,70% BIDU,10% NTES",
+         x = "", y = "Portfolio Value") +
+    geom_smooth(method = "loess") +
+    theme_tq() +
+    scale_color_tq() +
+    scale_y_continuous(labels = scales::dollar)
+```
+
+```{r}
+# save data for shiny app
+write.csv(dt,"dt.csv")
+```
+
+```{r}
+# try another invest rate combination: 10% MSFT, 80% BIDU, 10% NTES
+initial_position <- 250000 
+wts <- c(0.1,0.8,0.1)
+portfolio_growth_monthly_2 <- stock_returns_monthly %>%
+    tq_portfolio(assets_col   = symbol, 
+                 returns_col  = monthly.return, 
+                 weights      = wts, 
+                 col_rename   = "investment.growth",
+                 wealth.index = TRUE) %>%
+    mutate(investment.growth = investment.growth * initial_position)
+
+portfolio_growth_monthly_2 %>%
+    ggplot(aes(x = date, y = investment.growth)) +
+    geom_line(size = 2, color = palette_light()[[5]]) +
+    labs(title = "Portfolio Performance 3",
+         subtitle = "10% MSFT,80% BIDU,10% NTES",
+         x = "", y = "Portfolio Value") +
+    geom_smooth(method = "loess") +
+    theme_tq() +
+    scale_color_tq() +
+    scale_y_continuous(labels = scales::dollar)
+```
+

@@ -1,6 +1,7 @@
 ---
 title: "MA615 Stock Project Report"
 date: "12/12/2020"
+author: "Ziyi Bai"
 output: html_document
 framework: bootstrap
 mode: selfcontained
@@ -57,7 +58,23 @@ Secondly, I draw graphs to show the price trend for each stock. Although the pri
 
 ![(Stock Price Trend For Each Stock)](/Users/baiziyi/Desktop/MA615-Steam-Project/1.jpeg)
 
-Then, I calculated each stock's monthly return rate and explore the trend for their return rate. From September to October, each stock's price decreased for a certain amount. Since October, their stock price recovered gradually. 
+Then, I calculated each stock's monthly return rate and explore the trend for their return rate. Monthly return rate higher than 0 means we can gain money from this stock. From September to October, each stock's monthly return rate decreased for a certain amount. Since October, their stock price recovered gradually. 
 
 ![(Monthly Return Trend For Each Stock)](/Users/baiziyi/Desktop/MA615-Steam-Project/2.jpeg)
 
+### Investment Plan
+
+I have tried three combinations to compare the outcomes. At the beginning, I invest relatively same amount of money in three stocks: 30% in MSFT, 40% in BIDU and 30% in NTES. Unfortunately, I found that my profit is unstable based on this plan: 
+
+![(Investment Performance)](/Users/baiziyi/Desktop/MA615-Steam-Project/3.jpeg)
+
+Each stock's stock price increased at the end of November with different amount of money. BIDU increased about 20 USD, MSFT increased about 10 USD and NTES increased about 5 USD. Basically we can say that the more we invest in the BIDU, the more profits we are expected to gain. Then, I tried use 70% of my money to buy BIDU, 20% of money to buy MSFT and 10% of my money to buy NTES. At the end of November, my funds increased into 280,673.2 USD, which has increased 12.27%. 
+
+At the end, I decided to choose the third plan: 10% invest in MSFT, 80% invest in BIDU and 10% invest in NTES. Then the profits turns to 283,202 USD, which increased 13.28%. 
+
+![(Investment Performance)](/Users/baiziyi/Desktop/MA615-Steam-Project/5.jpeg)
+
+### Further Information
+
+1. I also created a shiny application posted on shiny.io.
+2. The full process code for this project are posted on Github.
