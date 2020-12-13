@@ -44,13 +44,13 @@ text-indent: 0px;
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-### Introduction
+### 1. Introduction
 
 The COVID-19 pandemic has had a devastating effect on the economy in the United States. In early March 2020, the first lockdown began and the stock market plunged. However, the stock market recovered since the early April. Investment in stock may acquire a great amount of profits.   
 
-I have discovered the online investment advices from Financial Advisor Magazine published on June 2020. The Internet Industry is one of the most famous one recent years in China, so I picked three Internet company's stock, BIDU, MSFT and NTES, as combination to simulate invest actions based on stock data from 2020-07-01 to 2020-12-01.
+The Internet Industry is one of the most famous one recent years in China, so I am interested in how the Internet company performed during the Covid-19 period of time and which is the best combination for my selected stocks. I have discovered the online investment advice from Financial Advisor Magazine published on June 2020 and picked three Internet company's stock, BIDU, MSFT and NTES, as combination to simulate invest actions based on stock data from 2020-07-01 to 2020-12-01.
 
-### Explore The Data Information
+### 2. Explore The Data Information
 
 First of all, after acquire the stcok price for 2020-07-01 to 2020-12-01, I calculated the minimum, maximum and average stock price for each stock. The average close price for BIDU is 128.10755 USD; the average close price for MSFT is 211.40104 USD; the average close price for NTES is 92.14275 USD.
 
@@ -62,7 +62,7 @@ Then, I calculated each stock's monthly return rate and explore the trend for th
 
 ![(Monthly Return Trend For Each Stock)](/Users/baiziyi/Desktop/MA615-Steam-Project/2.jpeg)
 
-### Investment Plan
+### 3. Investment Plan
 
 I have tried three combinations to compare the outcomes. At the beginning, I invest relatively same amount of money in three stocks: 30% in MSFT, 40% in BIDU and 30% in NTES. Unfortunately, I found that my profit is unstable based on this plan: 
 
@@ -73,6 +73,12 @@ Each stock's stock price increased at the end of November with different amount 
 At the end, I decided to choose the third plan: 10% invest in MSFT, 80% invest in BIDU and 10% invest in NTES. Then the profits turns to 283,202 USD, which increased 13.28%. 
 
 ![(Investment Performance)](/Users/baiziyi/Desktop/MA615-Steam-Project/5.jpeg)
+
+### 4. Check the performace of stock
+
+I check each stock's performance using CAPM. I chose stock price of 'XLK' as baseline. Then, use the tq_performance function is able to calculate the alpha and beta value for each stock. MSFT and NTES is under performed of the baseline. MSFT is 1.28% worse performed than my referenced benchmark; NTES is 0.90% under performed than my referenced benchmark; however, for BIDU, it better performed 2.70% than my referenced benchmark. 
+
+![(Check stock Performance using CAPM)](/Users/baiziyi/Desktop/MA615-Steam-Project/6.jpeg)
 
 ### Further Information
 

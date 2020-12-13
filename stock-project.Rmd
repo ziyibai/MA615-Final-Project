@@ -14,6 +14,7 @@ library(lubridate)
 library(bizdays)
 library(tidyquant)
 library(quantmod)
+library(dplyr)
 ```
 
 ### 1. Introduction 
@@ -78,8 +79,8 @@ stock_returns_monthly %>%
          x = "Date",y="Monthly Return Rate")
 ```
 
-### Investment Plan
-
+### 3. Investment Plan
+### 3.1 Make some combinations
 ```{r}
 # try another invest rate combination: 30% MSFT, 40% BIDU, 30% NTES
 initial_position <- 250000 
@@ -128,12 +129,6 @@ portfolio_growth_monthly_1 %>%
     scale_color_tq() +
     scale_y_continuous(labels = scales::dollar)
 ```
-
-```{r}
-# save data for shiny app
-write.csv(dt,"dt.csv")
-```
-
 ```{r}
 # try another invest rate combination: 10% MSFT, 80% BIDU, 10% NTES
 initial_position <- 250000 
@@ -157,4 +152,49 @@ portfolio_growth_monthly_2 %>%
     scale_color_tq() +
     scale_y_continuous(labels = scales::dollar)
 ```
+
+```{r}
+# save data for shiny app
+write.csv(dt,"dt.csv")
+```
+
+
+### 3.2 Check stock performance
+```{r}
+Ra <- c("MSFT", "BIDU", "NTES") %>%
+    tq_get(get  = "stock.prices",
+           from = "2020-07-01",
+           to   = "2020-12-01") %>%
+    group_by(symbol) %>%
+    tq_transmute(select     = adjusted, 
+                 mutate_fun = periodReturn, 
+                 period     = "monthly", 
+                 col_rename = "Ra")
+Ra
+```
+```{r}
+# get baseline
+Rb <- "IVE" %>%
+    tq_get(get  = "stock.prices",
+           from = "2020-07-01",
+           to   = "2020-12-01") %>%
+    tq_transmute(select     = adjusted, 
+                 mutate_fun = periodReturn, 
+                 period     = "monthly", 
+                 col_rename = "Rb")
+Rb
+```
+```{r}
+# combine the dataset
+RaRb <- left_join(Ra, Rb, by = c("date" = "date"))
+RaRb
+```
+```{r}
+RaRb_capm <- RaRb %>%
+    tq_performance(Ra = Ra, 
+                   Rb = Rb, 
+                   performance_fun = table.CAPM)
+RaRb_capm %>% select(symbol, Alpha, Beta)
+```
+
 
