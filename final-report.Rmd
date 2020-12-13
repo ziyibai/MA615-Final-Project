@@ -1,0 +1,63 @@
+---
+title: "MA615 Stock Project Report"
+date: "12/12/2020"
+output: html_document
+framework: bootstrap
+mode: selfcontained
+widgets: "nyt_home"
+highlighter: prettify
+hitheme: twitter-bootstrap
+assets:
+  css:
+    - "http://fonts.googleapis.com/css?family=Raleway:300"
+    - "http://fonts.googleapis.com/css?family=Oxygen"
+
+---
+
+<style>
+body{
+  font-family:'Oxygen', sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+h1,h2,h3,h4 {
+  font-family:'Raleway',sans-serif;
+}
+
+.container{width:1000px;}
+h3{
+background-color: #D4DAEC;
+text-indent:100px;
+}
+h4{
+text-indent:100px;
+}
+
+g-table-intro h4{
+text-indent: 0px;
+}
+</style>
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+### Introduction
+
+The COVID-19 pandemic has had a devastating effect on the economy in the United States. In early March 2020, the first lockdown began and the stock market plunged. However, the stock market recovered since the early April. Investment in stock may acquire a great amount of profits.   
+
+I have discovered the online investment advices from Financial Advisor Magazine published on June 2020. The Internet Industry is one of the most famous one recent years in China, so I picked three Internet company's stock, BIDU, MSFT and NTES, as combination to simulate invest actions based on stock data from 2020-07-01 to 2020-12-01.
+
+### Explore The Data Information
+
+First of all, after acquire the stcok price for 2020-07-01 to 2020-12-01, I calculated the minimum, maximum and average stock price for each stock. The average close price for BIDU is 128.10755 USD; the average close price for MSFT is 211.40104 USD; the average close price for NTES is 92.14275 USD.
+
+Secondly, I draw graphs to show the price trend for each stock. Although the price for each stock fluctuate, their stock price all has an increasing trend.
+
+![(Stock Price Trend For Each Stock)](/Users/baiziyi/Desktop/MA615-Steam-Project/1.jpeg)
+
+Then, I calculated each stock's monthly return rate and explore the trend for their return rate. From September to October, each stock's price decreased for a certain amount. Since October, their stock price recovered gradually. 
+
+![(Monthly Return Trend For Each Stock)](/Users/baiziyi/Desktop/MA615-Steam-Project/2.jpeg)
+
