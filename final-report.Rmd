@@ -82,5 +82,5 @@ I check each stock's performance using CAPM. I chose stock price of 'XLK' as bas
 
 ### Further Information
 
-1. I also created a shiny application posted on shiny.io.
-2. The full process code for this project are posted on Github.
+1. [I also created a shiny application posted on shiny.io.](https://ziyibai-shinyapp.shinyapps.io/stock/)
+2. [The full process code for this project are posted on Github.](https://github.com/ziyibai/MA615-Final-Project)
